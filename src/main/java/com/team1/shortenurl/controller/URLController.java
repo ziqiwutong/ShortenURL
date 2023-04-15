@@ -62,11 +62,8 @@ public class URLController {
     public void UrlResolve(@PathVariable("shortUrl") String shortUrl, HttpServletResponse response) throws IOException {
         shortUrl = "heroku.team1.com/" + shortUrl;
         Url url = resolveUrlService.resolve(shortUrl);
-        String google = "www.google.com";
         if(url == null){
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "entity not found"
-            );
+            response.sendRedirect("../../../resources/public/error/404.html");
         }
         String longUrl = url.getLongUrl();
         response.sendRedirect(longUrl);
