@@ -8,4 +8,8 @@ import java.util.List;
 @Mapper
 public interface LoginMapper {
     User queryUser(int uid);
+
+    User userLogin(String username, String password);
+
+    User queryUserWithName(String username);
 }

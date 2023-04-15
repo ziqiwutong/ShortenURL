@@ -25,7 +25,7 @@ public class UserController {
         JSONObject res = new JSONObject();
         res.put("uid", user.getUid());
         res.put("urls_id", user.getUrls_id());
-        res.put("name", user.getName());
+        res.put("name", user.getUsername());
         res.put("password", user.getPassword());
         res.put("type", user.getType());
         res.put("email", user.getEmail());
@@ -34,6 +34,34 @@ public class UserController {
         res.put("updateTime", user.getUpdateTime());
 
         System.out.println("nb");
+
+        return res.toJSONString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/userLogin")
+    public String userLogin(@RequestBody String json){
+        JSONObject jsonObject = JSONObject.parseObject(json);
+        String username = jsonObject.getString("username");
+        String password = jsonObject.getString("password");
+        User user = loginService.userLogin(username, password);
+        JSONObject res = new JSONObject();
+
+        if(user == null){
+            res.put("loginStatus", "false");
+            res.put("username", username);
+            res.put("password", password);
+        }else{
+            res.put("loginStatus", "true");
+            res.put("uid", user.getUid());
+            res.put("urls_id", user.getUrls_id());
+            res.put("username", user.getUsername());
+            res.put("password", user.getPassword());
+            res.put("type", user.getType());
+            res.put("email", user.getEmail());
+            res.put("createTime", user.getCreateTime());
+            res.put("updateTime", user.getUpdateTime());
+        }
 
         return res.toJSONString();
     }

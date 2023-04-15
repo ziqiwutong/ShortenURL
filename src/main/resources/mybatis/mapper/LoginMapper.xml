@@ -6,4 +6,8 @@
     <select id="queryUser" resultType="com.team1.shortenurl.entity.User">
         select * from user where uid = #{uid};
     </select>
+
+    <select id="queryUserWithName" resultType="com.team1.shortenurl.entity.User">
+        select * from user where userName = #{userName};
+    </select>
 </mapper>
