@@ -5,7 +5,9 @@ import com.team1.shortenurl.entity.Url;
 import com.team1.shortenurl.service.ResolveUrlService;
 import com.team1.shortenurl.service.ShortenUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -60,8 +62,11 @@ public class URLController {
     public void UrlResolve(@PathVariable("shortUrl") String shortUrl, HttpServletResponse response) throws IOException {
         shortUrl = "heroku.team1.com/" + shortUrl;
         Url url = resolveUrlService.resolve(shortUrl);
+        String google = "www.google.com";
         if(url == null){
-            response.sendRedirect("google.com");
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "entity not found"
+            );
         }
         String longUrl = url.getLongUrl();
         response.sendRedirect(longUrl);
