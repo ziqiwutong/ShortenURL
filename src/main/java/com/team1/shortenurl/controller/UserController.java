@@ -25,7 +25,7 @@ public class UserController {
         JSONObject res = new JSONObject();
         res.put("uid", user.getUid());
         res.put("urls_id", user.getUrls_id());
-        res.put("name", user.getName());
+        res.put("name", user.getUsername());
         res.put("password", user.getPassword());
         res.put("type", user.getType());
         res.put("email", user.getEmail());
