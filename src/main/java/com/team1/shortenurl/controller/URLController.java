@@ -2,13 +2,13 @@ package com.team1.shortenurl.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.team1.shortenurl.entity.Url;
+import com.team1.shortenurl.service.ResolveUrlService;
 import com.team1.shortenurl.service.ShortenUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Random;
 
 // @RequestMapping(value = "/urlProcess")
@@ -18,9 +18,12 @@ public class URLController {
     @Autowired
     ShortenUrlService shortenUrlService;
 
+    @Autowired
+    ResolveUrlService resolveUrlService;
+
     @ResponseBody
     @RequestMapping(value = "/shortenUrl")
-    public String queryUser(@RequestBody String json){
+    public String UrlShorten(@RequestBody String json){
         JSONObject jsonObject = JSONObject.parseObject(json);
         String url = jsonObject.getString("url");
         int uid = jsonObject.getIntValue("uid");
@@ -53,8 +56,14 @@ public class URLController {
         return String.valueOf(sb);
     }
     @ResponseBody
-    @RequestMapping(value = "{}")
-    public String queryUse(@RequestBody String json){
-        return "";
+    @RequestMapping(value = "/{shortUrl}")
+    public void UrlResolve(@PathVariable("shortUrl") String shortUrl, HttpServletResponse response) throws IOException {
+        shortUrl = "heroku.team1.com/" + shortUrl;
+        Url url = resolveUrlService.resolve(shortUrl);
+        if(url == null){
+            response.sendRedirect("google.com");
+        }
+        String longUrl = url.getLongUrl();
+        response.sendRedirect(longUrl);
     }
 }
