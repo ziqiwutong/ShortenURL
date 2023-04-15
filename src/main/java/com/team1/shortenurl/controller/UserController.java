@@ -1,7 +1,9 @@
 package com.team1.shortenurl.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.team1.shortenurl.dao.CreateAccountMapper;
 import com.team1.shortenurl.entity.User;
+import com.team1.shortenurl.service.CreateAccountService;
 import com.team1.shortenurl.service.LoginService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,8 @@ public class UserController {
     @Resource
     LoginService loginService;
 
+    @Resource
+    CreateAccountService createAccountService;
     @ResponseBody
     @RequestMapping(value = "/queryUser")
     public String queryUser(@RequestBody String json){
@@ -36,5 +40,31 @@ public class UserController {
         System.out.println("nb");
 
         return res.toJSONString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/createAccount")
+    public String createAccount(@RequestBody String json){
+        JSONObject jsonObject = JSONObject.parseObject(json);
+        String email = jsonObject.getString("email");
+        String username = jsonObject.getString("username");
+        String password = jsonObject.getString("password");
+
+        User emailCheck = createAccountService.checkEmail(email);
+        if(emailCheck != null){
+            JSONObject res = new JSONObject();
+            res.put("status", "Email already exists");
+            return res.toJSONString();
+        }
+
+        User usernameCheck = createAccountService.checkEmail(username);
+        if(usernameCheck != null) {
+            JSONObject res = new JSONObject();
+            res.put("status", "Username already exists");
+            return res.toJSONString();
+        }
+
+        return "temp";
+
     }
 }
