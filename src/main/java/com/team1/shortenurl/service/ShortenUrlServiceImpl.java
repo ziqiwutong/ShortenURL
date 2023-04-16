@@ -12,7 +12,7 @@ public class ShortenUrlServiceImpl implements ShortenUrlService{
 
     @Override
     public void createShortenUrl(int uid, String longUrl, String shortUrl){
-        this.shortenUrlMapper.createShortenUrl(uid, longUrl, shortUrl);
+        this.shortenUrlMapper.createShortenUrl(uid, longUrl, shortUrl, 0);
     }
 
     @Override
