@@ -20,18 +20,18 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/userLogin")
-    public String  userLogin(@RequestBody String json){
+    public String userLogin(@RequestBody String json) {
         JSONObject jsonObject = JSONObject.parseObject(json);
         String username = jsonObject.getString("username");
         String password = jsonObject.getString("password");
         User user = loginService.userLogin(username, password);
 
         JSONObject res = new JSONObject();
-        if(user == null){
+        if (user == null) {
             res.put("loginStatus", "Login Failed.");
             res.put("username", username);
             res.put("password", password);
-        }else{
+        } else {
             res.put("loginStatus", "Login Succeed.");
             res.put("uid", user.getUid());
             res.put("username", user.getUsername());
@@ -50,12 +50,12 @@ public class UserController {
         String email = jsonObject.getString("email");
         String password = jsonObject.getString("password");
 
-        if (Objects.isNull(createAccountService.checkEmail(email)) && Objects.isNull(createAccountService.checkUsername(username))){
+        if (Objects.isNull(createAccountService.checkEmail(email)) && Objects.isNull(createAccountService.checkUsername(username))) {
             createAccountService.createUser(email, username, password);
             JSONObject res = new JSONObject();
             res.put("status", "Create user success.");
             return res.toJSONString();
-        }else {
+        } else {
             JSONObject res = new JSONObject();
             res.put("status", "Create user failure.");
             return res.toJSONString();
