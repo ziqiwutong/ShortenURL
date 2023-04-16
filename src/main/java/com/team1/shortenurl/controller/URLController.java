@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
 // @RequestMapping(value = "/urlProcess")
@@ -71,5 +72,14 @@ public class URLController {
         resolveUrlService.updateCount(url.getCountClick() + 1, url.getServiceId());
         String longUrl = url.getLongUrl();
         response.sendRedirect(longUrl);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "batchShorten")
+    public String BatchUrlShorten(@RequestBody List<Url> urls){
+        for(Url url: urls){
+            System.out.println(url.toString());
+        }
+        return "nb";
     }
 }
