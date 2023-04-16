@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Random;
 
 // @RequestMapping(value = "/urlProcess")
@@ -71,5 +72,25 @@ public class URLController {
         resolveUrlService.updateCount(url.getCountClick() + 1, url.getServiceId());
         String longUrl = url.getLongUrl();
         response.sendRedirect(longUrl);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/diyShortenUrl")
+    public String diyShortenUrl(@RequestBody String json) {
+        JSONObject jsonObject = JSONObject.parseObject(json);
+        int uid = jsonObject.getIntValue("uid");
+        String longUrl = jsonObject.getString("longUrl");
+        String shortUrl = jsonObject.getString("shortUrl");
+
+        Url url = shortenUrlService.checkShortUrl(shortUrl);
+        JSONObject res = new JSONObject();
+        if(Objects.isNull(url)){
+            shortUrl = "sslt1.herokuapp.com/" + shortUrl;
+            shortenUrlService.createShortenUrl(uid, longUrl, shortUrl);
+            res.put("status", "Success");
+        }else{
+            res.put("status", "Failure");
+        }
+        return res.toJSONString();
     }
 }
