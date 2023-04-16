@@ -35,7 +35,7 @@ public class URLController {
         while(shortenUrlService.checkShortUrl(shortUrl) != null){
             shortUrl = randG();
         }
-        shortUrl = "heroku.team1.com/" + shortUrl;
+        shortUrl = "sslt1.herokuapp.com/" + shortUrl;
         shortenUrlService.createShortenUrl(uid, url, shortUrl);
         JSONObject res = new JSONObject();
         res.put("shortUrl", shortUrl);
@@ -61,7 +61,7 @@ public class URLController {
     @ResponseBody
     @RequestMapping(value = "/{shortUrl}")
     public void UrlResolve(@PathVariable("shortUrl") String shortUrl, HttpServletResponse response) throws IOException {
-        shortUrl = "heroku.team1.com/" + shortUrl;
+        shortUrl = "sslt1.herokuapp.com/" + shortUrl;
         Url url = resolveUrlService.resolve(shortUrl);
         if(url == null){
             response.sendRedirect("/public/error/404.html");
