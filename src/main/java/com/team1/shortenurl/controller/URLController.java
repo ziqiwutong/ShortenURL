@@ -16,6 +16,7 @@ import java.util.Random;
 // @RequestMapping(value = "/urlProcess")
 
 @RestController
+@CrossOrigin
 public class URLController {
     @Autowired
     ShortenUrlService shortenUrlService;
@@ -63,7 +64,8 @@ public class URLController {
         shortUrl = "heroku.team1.com/" + shortUrl;
         Url url = resolveUrlService.resolve(shortUrl);
         if(url == null){
-            response.sendRedirect("../../../resources/public/error/404.html");
+            response.sendRedirect("/public/error/404.html");
+            return;
         }
         String longUrl = url.getLongUrl();
         response.sendRedirect(longUrl);
