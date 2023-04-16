@@ -97,10 +97,34 @@ public class URLController {
 
     @ResponseBody
     @RequestMapping(value = "batchShorten")
-    public String BatchUrlShorten(@RequestBody List<Url> urls){
-        for(Url url: urls){
-            System.out.println(url.toString());
+    public String BatchUrlShorten(@RequestBody MyRequestData requestData){
+        String uid = requestData.getUid();
+        String[] jsonData = requestData.getJsonData();
+        System.out.println(uid);
+        for(String data: jsonData){
+            System.out.println(data);
         }
         return "nb";
+    }
+
+    private static class MyRequestData {
+        private String uid;
+        private String[] jsonData;
+
+        public String getUid() {
+            return uid;
+        }
+
+        public void setUid(String uid) {
+            this.uid = uid;
+        }
+
+        public String[] getJsonData() {
+            return jsonData;
+        }
+
+        public void setJsonData(String[] jsonData) {
+            this.jsonData = jsonData;
+        }
     }
 }
