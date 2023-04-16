@@ -96,7 +96,7 @@ public class URLController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "batchShorten")
+    @RequestMapping(value = "/batchShorten")
     public String BatchUrlShorten(@RequestBody MyRequestData requestData){
         String uid = requestData.getUid();
         String[] jsonData = requestData.getJsonData();
