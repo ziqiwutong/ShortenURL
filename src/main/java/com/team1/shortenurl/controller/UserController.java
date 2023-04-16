@@ -53,11 +53,11 @@ public class UserController {
         if (Objects.isNull(createAccountService.checkEmail(email)) && Objects.isNull(createAccountService.checkUsername(username))){
             createAccountService.createUser(email, username, password);
             JSONObject res = new JSONObject();
-            res.put("status", "Create user success");
+            res.put("status", "Create user success.");
             return res.toJSONString();
         }else {
             JSONObject res = new JSONObject();
-            res.put("status", "Create user failure");
+            res.put("status", "Create user failure.");
             return res.toJSONString();
         }
     }
