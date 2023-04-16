@@ -5,8 +5,22 @@ public class Url {
     private int uid;
     private String longUrl;
     private String shortUrl;
+    private int count;
     private String createTime;
     private String updateTime;
+
+    @Override
+    public String toString() {
+        return "Url{" +
+                "service_id=" + service_id +
+                ", uid=" + uid +
+                ", longUrl='" + longUrl + '\'' +
+                ", shortUrl='" + shortUrl + '\'' +
+                ", count=" + count +
+                ", createTime='" + createTime + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                '}';
+    }
 
     public int getService_id() {
         return service_id;
@@ -40,6 +54,14 @@ public class Url {
         this.shortUrl = shortUrl;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public String getCreateTime() {
         return createTime;
     }
@@ -56,15 +78,4 @@ public class Url {
         this.updateTime = updateTime;
     }
 
-    @Override
-    public String toString() {
-        return "Url{" +
-                "service_id=" + service_id +
-                ", uid=" + uid +
-                ", longUrl='" + longUrl + '\'' +
-                ", shortUrl='" + shortUrl + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", updateTime='" + updateTime + '\'' +
-                '}';
-    }
 }

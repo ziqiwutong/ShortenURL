@@ -6,13 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ResolveUrlServiceImpl implements ResolveUrlService{
+public class ResolveUrlServiceImpl implements ResolveUrlService {
 
     @Autowired
     ResolveUrlMapper resolveUrlMapper;
 
     @Override
-    public Url resolve(String shortUrl){
+    public Url resolve(String shortUrl) {
         return resolveUrlMapper.resolve(shortUrl);
+    }
+
+    @Override
+    public void updateCount(int count, int service_id) {
+        this.resolveUrlMapper.updateCount(count, service_id);
     }
 }

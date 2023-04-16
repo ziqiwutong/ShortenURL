@@ -7,4 +7,10 @@
     <select id="resolve" resultType="com.team1.shortenurl.entity.Url">
         select * from urlMapper where shortUrl = #{shortUrl}
     </select>
+
+    <update id="updateCount">
+        update urlMapper
+        set count = #{count}
+        where service_id = #{service_id}
+    </update>
 </mapper>

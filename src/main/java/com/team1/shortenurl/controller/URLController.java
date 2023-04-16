@@ -6,6 +6,7 @@ import com.team1.shortenurl.service.ResolveUrlService;
 import com.team1.shortenurl.service.ShortenUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Random;
@@ -65,6 +66,7 @@ public class URLController {
             response.sendRedirect("/public/error/404.html");
             return;
         }
+        resolveUrlService.updateCount(url.getCount() + 1, url.getService_id());
         String longUrl = url.getLongUrl();
         response.sendRedirect(longUrl);
     }
