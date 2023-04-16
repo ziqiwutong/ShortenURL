@@ -67,8 +67,8 @@ public class URLController {
             return;
         }
         System.out.println(url.getCountClick());
-        System.out.println(url.getService_id());
-        resolveUrlService.updateCount(url.getCountClick() + 1, url.getService_id());
+        System.out.println(url.getServiceId());
+        resolveUrlService.updateCount(url.getCountClick() + 1, url.getServiceId());
         String longUrl = url.getLongUrl();
         response.sendRedirect(longUrl);
     }

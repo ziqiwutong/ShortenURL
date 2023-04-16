@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ResolveUrlMapper {
     Url resolve(String shortUrl);
 
-    void updateCount(int countClick, int service_id);
+    void updateCount(int countClick, int serviceId);
 }

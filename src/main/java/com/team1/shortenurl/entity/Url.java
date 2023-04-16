@@ -1,7 +1,7 @@
 package com.team1.shortenurl.entity;
 
 public class Url {
-    private int service_id;
+    private int serviceId;
     private int uid;
     private String longUrl;
     private String shortUrl;
@@ -12,7 +12,7 @@ public class Url {
     @Override
     public String toString() {
         return "Url{" +
-                "service_id=" + service_id +
+                "service_id=" + serviceId +
                 ", uid=" + uid +
                 ", longUrl='" + longUrl + '\'' +
                 ", shortUrl='" + shortUrl + '\'' +
@@ -22,12 +22,12 @@ public class Url {
                 '}';
     }
 
-    public int getService_id() {
-        return service_id;
+    public int getServiceId() {
+        return serviceId;
     }
 
-    public void setService_id(int service_id) {
-        this.service_id = service_id;
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
     }
 
     public int getUid() {
