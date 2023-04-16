@@ -22,7 +22,7 @@ public class DataAnalysisController {
     DataAnalysisService dataAnalysisService;
 
     @ResponseBody
-    @RequestMapping(value = "/userLogin")
+    @RequestMapping(value = "/queryLastYear")
     public String userActivityIn12Month(@RequestBody String json) {
         JSONObject jsonObject = JSONObject.parseObject(json);
         int uid = jsonObject.getIntValue("uid");
