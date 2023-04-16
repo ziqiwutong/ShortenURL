@@ -5,9 +5,8 @@ public class User {
     private int uid;
     private String username;
     private String password;
-    private int type;
+    private int usertype;
     private String email;
-    private int loginStatus;
     private String createTime;
     private String updateTime;
 
@@ -35,12 +34,12 @@ public class User {
         this.password = password;
     }
 
-    public int getType() {
-        return type;
+    public int getUsertype() {
+        return usertype;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setUsertype(int usertype) {
+        this.usertype = usertype;
     }
 
     public String getEmail() {
@@ -49,14 +48,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getLoginStatus() {
-        return loginStatus;
-    }
-
-    public void setLoginStatus(int loginStatus) {
-        this.loginStatus = loginStatus;
     }
 
     public String getCreateTime() {
@@ -81,9 +72,8 @@ public class User {
                 "uid=" + uid +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", type=" + type +
+                ", type=" + usertype +
                 ", email='" + email + '\'' +
-                ", login_status=" + loginStatus +
                 ", createTime='" + createTime + '\'' +
                 ", updateTime='" + updateTime + '\'' +
                 '}';
