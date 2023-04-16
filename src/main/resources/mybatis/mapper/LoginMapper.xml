@@ -3,12 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team1.shortenurl.dao.LoginMapper">
-    <select id="queryUser" resultType="com.team1.shortenurl.entity.User">
-        select *
-        from userinfo
-        where uid = #{uid};
-    </select>
-
     <select id="queryUserWithName" resultType="com.team1.shortenurl.entity.User">
         select * from userinfo where username = #{username};
     </select>

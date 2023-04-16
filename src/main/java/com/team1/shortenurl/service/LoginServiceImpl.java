@@ -10,15 +10,8 @@ import java.util.Objects;
 
 @Service
 public class LoginServiceImpl implements LoginService{
-//    @Resource
-//    private LoginMapper loginMapper;
-
     @Autowired
     private LoginMapper loginMapper;
-    @Override
-    public User queryUser(int uid){
-        return this.loginMapper.queryUser(uid);
-    };
 
     @Override
     public User userLogin(String username, String password){

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface LoginService {
-    User queryUser(int uid);
 
     User userLogin(String username, String password);
 
