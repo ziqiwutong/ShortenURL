@@ -9,5 +9,5 @@ public interface CreateAccountMapper {
 
     User checkUsername(String username);
 
-    void createUser(String email, String username, String password);
+    void createUser(String email, String username, String password, int usertype);
 }
