@@ -81,11 +81,11 @@ public class URLController {
         int uid = jsonObject.getIntValue("uid");
         String longUrl = jsonObject.getString("longUrl");
         String shortUrl = jsonObject.getString("shortUrl");
+        shortUrl = "sslt1.herokuapp.com/" + shortUrl;
 
         Url url = shortenUrlService.checkShortUrl(shortUrl);
         JSONObject res = new JSONObject();
         if(Objects.isNull(url)){
-            shortUrl = "sslt1.herokuapp.com/" + shortUrl;
             shortenUrlService.createShortenUrl(uid, longUrl, shortUrl);
             res.put("status", "Success");
         }else{
