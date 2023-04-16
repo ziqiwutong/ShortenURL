@@ -1,6 +1,8 @@
 package com.team1.shortenurl.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.google.gson.JsonArray;
 import com.team1.shortenurl.entity.Url;
 import com.team1.shortenurl.service.ResolveUrlService;
 import com.team1.shortenurl.service.ShortenUrlService;
@@ -97,34 +99,16 @@ public class URLController {
 
     @ResponseBody
     @RequestMapping(value = "/batchShorten")
-    public String BatchUrlShorten(@RequestBody MyRequestData requestData){
-        String uid = requestData.getUid();
-        String[] jsonData = requestData.getJsonData();
+    public String BatchUrlShorten(@RequestBody String json){
+        JSONObject jsonObject = JSONObject.parseObject(json);
+        int uid = jsonObject.getInteger("uid");
+        JSONArray ja = jsonObject.getJSONArray("jsonData");
+        List<String> list = ja.toJavaList(String.class);
         System.out.println(uid);
-        for(String data: jsonData){
+        for(String data: list){
             System.out.println(data);
         }
         return "nb";
     }
 
-    private static class MyRequestData {
-        private String uid;
-        private String[] jsonData;
-
-        public String getUid() {
-            return uid;
-        }
-
-        public void setUid(String uid) {
-            this.uid = uid;
-        }
-
-        public String[] getJsonData() {
-            return jsonData;
-        }
-
-        public void setJsonData(String[] jsonData) {
-            this.jsonData = jsonData;
-        }
-    }
 }
