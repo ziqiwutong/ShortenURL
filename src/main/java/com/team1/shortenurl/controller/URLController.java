@@ -88,10 +88,10 @@ public class URLController {
 
         Url url = shortenUrlService.checkShortUrl(shortUrl);
         JSONObject res = new JSONObject();
-        if(Objects.isNull(url)){
+        if (Objects.isNull(url)) {
             shortenUrlService.createShortenUrl(uid, longUrl, shortUrl);
             res.put("status", "Success");
-        }else{
+        } else {
             res.put("status", "Failure");
         }
         return res.toJSONString();
@@ -99,16 +99,26 @@ public class URLController {
 
     @ResponseBody
     @RequestMapping(value = "/batchShorten")
-    public String BatchUrlShorten(@RequestBody String json){
+    public String BatchUrlShorten(@RequestBody String json) {
         JSONObject jsonObject = JSONObject.parseObject(json);
         int uid = jsonObject.getInteger("uid");
-        JSONArray ja = jsonObject.getJSONArray("jsonData");
-        List<String> list = ja.toJavaList(String.class);
-        System.out.println(uid);
-        for(String data: list){
-            System.out.println(data);
+        JSONArray ja = jsonObject.getJSONArray("longUrls");
+        List<String> longUrlList = ja.toJavaList(String.class);
+
+        JSONArray shortUrlsInfoJSON = new JSONArray();
+        for (String longUrl : longUrlList) {
+            String shortUrl = randG();
+            while (shortenUrlService.checkShortUrl(shortUrl) != null) {
+                shortUrl = randG();
+            }
+            shortUrl = "sslt1.herokuapp.com/" + shortUrl;
+            shortenUrlService.createShortenUrl(uid, longUrl, shortUrl);
+            JSONObject jsonObjectInfo = new JSONObject();
+            jsonObjectInfo.put("longUrl", longUrl);
+            jsonObjectInfo.put("shortUrl", shortUrl);
+            shortUrlsInfoJSON.add(jsonObjectInfo);
         }
-        return "nb";
+        return shortUrlsInfoJSON.toJSONString();
     }
 
 }
