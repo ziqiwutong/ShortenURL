@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team1.shortenurl.dao.ShortenUrlMapper">
     <insert id="createShortenUrl">
-        insert into urlMapper (uid, longUrl, shortUrl) values (#{uid}, #{longUrl}, #{shortUrl})
+        insert into urlMapper (uid, longUrl, shortUrl, countClick) values (#{uid}, #{longUrl}, #{shortUrl}, #{countClick})
     </insert>
 
     <select id="checkShortUrl" resultType="com.team1.shortenurl.entity.Url">
