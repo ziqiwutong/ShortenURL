@@ -3,12 +3,11 @@ package com.team1.shortenurl.entity;
 public class User {
 
     private int uid;
-    private int urls_id;
     private String username;
     private String password;
     private int type;
     private String email;
-    private int login_status;
+    private int loginStatus;
     private String createTime;
     private String updateTime;
 
@@ -18,14 +17,6 @@ public class User {
 
     public void setUid(int uid) {
         this.uid = uid;
-    }
-
-    public int getUrls_id() {
-        return urls_id;
-    }
-
-    public void setUrls_id(int urls_id) {
-        this.urls_id = urls_id;
     }
 
     public String getUsername() {
@@ -60,12 +51,12 @@ public class User {
         this.email = email;
     }
 
-    public int getLogin_status() {
-        return login_status;
+    public int getLoginStatus() {
+        return loginStatus;
     }
 
-    public void setLogin_status(int login_status) {
-        this.login_status = login_status;
+    public void setLoginStatus(int loginStatus) {
+        this.loginStatus = loginStatus;
     }
 
     public String getCreateTime() {
@@ -88,12 +79,11 @@ public class User {
     public String toString() {
         return "User{" +
                 "uid=" + uid +
-                ", urls_id=" + urls_id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", type=" + type +
                 ", email='" + email + '\'' +
-                ", login_status=" + login_status +
+                ", login_status=" + loginStatus +
                 ", createTime='" + createTime + '\'' +
                 ", updateTime='" + updateTime + '\'' +
                 '}';

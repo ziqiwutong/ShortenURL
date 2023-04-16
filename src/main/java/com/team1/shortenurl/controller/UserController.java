@@ -22,17 +22,22 @@ public class UserController {
 
         JSONObject res = new JSONObject();
         res.put("uid", user.getUid());
-        res.put("urls_id", user.getUrls_id());
         res.put("name", user.getUsername());
         res.put("password", user.getPassword());
         res.put("type", user.getType());
         res.put("email", user.getEmail());
-        res.put("login_status", user.getLogin_status());
+        res.put("login_status", user.getLoginStatus());
         res.put("createTime", user.getCreateTime());
         res.put("updateTime", user.getUpdateTime());
 
         System.out.println("nb");
 
         return res.toJSONString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/createAccount")
+    public String createAccount(@RequestBody String json){
+
     }
 }
