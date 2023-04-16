@@ -23,6 +23,6 @@ public class CreateAccountServiceImpl implements CreateAccountService {
     @Override
     public void createUser(String email, String username, String password) {
 
-        this.createAccountMapper.createUser(email, username, password);
+        this.createAccountMapper.createUser(email, username, password, 1);
     }
 }

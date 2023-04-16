@@ -14,4 +14,9 @@
         from userinfo
         where username = #{username}
     </select>
+
+    <insert id="createUser">
+        insert into userinfo(username, email, password, usertype)
+        values (#{username}, #{email}, #{password}, #{usertype})
+    </insert>
 </mapper>
