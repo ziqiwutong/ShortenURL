@@ -17,7 +17,7 @@ public class ResolveUrlServiceImpl implements ResolveUrlService {
     }
 
     @Override
-    public void updateCount(int count, int service_id) {
-        this.resolveUrlMapper.updateCount(count, service_id);
+    public void updateCount(int countClick, int service_id) {
+        this.resolveUrlMapper.updateCount(countClick, service_id);
     }
 }

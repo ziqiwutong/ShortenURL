@@ -5,7 +5,7 @@ public class Url {
     private int uid;
     private String longUrl;
     private String shortUrl;
-    private int count;
+    private int countClick;
     private String createTime;
     private String updateTime;
 
@@ -16,7 +16,7 @@ public class Url {
                 ", uid=" + uid +
                 ", longUrl='" + longUrl + '\'' +
                 ", shortUrl='" + shortUrl + '\'' +
-                ", count=" + count +
+                ", count=" + countClick +
                 ", createTime='" + createTime + '\'' +
                 ", updateTime='" + updateTime + '\'' +
                 '}';
@@ -54,12 +54,12 @@ public class Url {
         this.shortUrl = shortUrl;
     }
 
-    public int getCount() {
-        return count;
+    public int getCountClick() {
+        return countClick;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setCountClick(int countClick) {
+        this.countClick = countClick;
     }
 
     public String getCreateTime() {

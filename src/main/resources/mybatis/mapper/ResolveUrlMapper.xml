@@ -10,7 +10,7 @@
 
     <update id="updateCount">
         update urlMapper
-        set count = #{count}
+        set countClick = #{countClick}
         where service_id = #{service_id}
     </update>
 </mapper>

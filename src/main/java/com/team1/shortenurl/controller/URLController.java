@@ -66,7 +66,7 @@ public class URLController {
             response.sendRedirect("/public/error/404.html");
             return;
         }
-        resolveUrlService.updateCount(url.getCount() + 1, url.getService_id());
+        resolveUrlService.updateCount(url.getCountClick() + 1, url.getService_id());
         String longUrl = url.getLongUrl();
         response.sendRedirect(longUrl);
     }

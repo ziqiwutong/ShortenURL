@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 public interface ResolveUrlService {
     Url resolve(String shortUrl);
 
-    void updateCount(int count, int service_id);
+    void updateCount(int countClick, int service_id);
 }
