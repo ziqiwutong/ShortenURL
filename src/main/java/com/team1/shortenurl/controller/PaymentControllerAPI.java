@@ -15,11 +15,9 @@ import java.util.Map;
 @RestController
 public class PaymentControllerAPI {
 
-    @Value("$(stripe.apikey)")
-    String stripeKey;
     @RequestMapping("/testPay")
     public CustomerData test(@RequestBody CustomerData data) throws StripeException {
-        Stripe.apiKey = stripeKey;
+        Stripe.apiKey = "sk_test_51MxbpCHbnp0twtPHd8b8U1v5B581rb64whdE2XQVB1vdNXjNigUGNmyKEDyYPw8cIw9zzivQrq1VpoHjaCs8NF5T00R28MrpaR";
 
         Map<String, Object> params = new HashMap<>();
         params.put("name", data.getName());
