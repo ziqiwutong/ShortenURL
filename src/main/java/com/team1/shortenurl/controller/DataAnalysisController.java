@@ -54,7 +54,11 @@ public class DataAnalysisController {
                 nm -= 12;
                 ny++;
             }
-            begin = ny + "-" + nm;
+            String nextMonth = "";
+            if(nm < 10){
+                nextMonth = "0" + nm;
+            }else nextMonth = String.valueOf(nm);
+            begin = ny + "-" + nextMonth;
         }
         for (Url url : list) {
             String ct = url.getCreateTime().substring(0, 7);
