@@ -45,7 +45,7 @@ public class DataAnalysisController {
 
         List<Url> list = this.dataAnalysisService.queryLastYear(uid);
 
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new TreeMap<>();
         for(int i = 0; i < 12; i++){
             map.put(begin, 0);
             int nm = Integer.parseInt(begin.split("-")[1]) + 1;
