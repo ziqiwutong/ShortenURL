@@ -79,9 +79,16 @@ public class DataAnalysisController {
         JSONObject jsonObject = JSONObject.parseObject(json);
         int uid = jsonObject.getIntValue("uid");
         List<Url> list = this.dataAnalysisService.queryTop5(uid);
+        JSONArray jsonArray = new JSONArray();
         for (Url url: list){
-            System.out.println(url.toString());
+            JSONObject object = new JSONObject();
+            object.put("longUrl", url.getLongUrl());
+            object.put("shortUrl", url.getShortUrl());
+            object.put("count", url.getCountClick());
+            object.put("createTime", url.getCreateTime());
+            object.put("updateTime", url.getUpdateTime());
+            jsonArray.add(object);
         }
-        return "nb";
+        return jsonArray.toJSONString();
     }
 }
