@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface DataAnalysisMapper {
     List<Url> queryLastYear(int uid);
+
+    List<Url> queryTop5(int uid);
 }

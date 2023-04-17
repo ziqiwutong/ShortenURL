@@ -72,4 +72,16 @@ public class DataAnalysisController {
         }
         return jsonArray.toJSONString();
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/queryTop5Url")
+    public String queryTop5Url(@RequestBody String json){
+        JSONObject jsonObject = JSONObject.parseObject(json);
+        int uid = jsonObject.getIntValue("uid");
+        List<Url> list = this.dataAnalysisService.queryTop5(uid);
+        for (Url url: list){
+            System.out.println(url.toString());
+        }
+        return "nb";
+    }
 }

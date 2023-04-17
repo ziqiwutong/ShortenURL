@@ -9,4 +9,5 @@ import java.util.List;
 public interface DataAnalysisService {
     List<Url> queryLastYear(int uid);
 
+    List<Url> queryTop5(int uid);
 }

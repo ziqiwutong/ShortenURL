@@ -7,6 +7,16 @@
         select *
         from urlMapper
         where uid = #{uid}
-        and create_time >= DATE_SUB(NOW(), INTERVAL 1 YEAR)
+          and create_time >= DATE_SUB(NOW(), INTERVAL 1 YEAR)
     </select>
+
+    <select id="queryTop5" resultType="com.team1.shortenurl.entity.Url">
+        SELECT *
+        FROM urlMapper
+        WHERE uid = #{uid}
+          AND create_time >= DATE_SUB(NOW(), INTERVAL 1 YEAR)
+        ORDER BY countClick DESC
+        LIMIT 5;
+    </select>
+
 </mapper>

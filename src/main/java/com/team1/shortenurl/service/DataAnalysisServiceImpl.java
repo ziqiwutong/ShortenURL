@@ -15,4 +15,8 @@ public class DataAnalysisServiceImpl implements DataAnalysisService{
         return this.dataAnalysisMapper.queryLastYear(uid);
     }
 
+    public List<Url> queryTop5(int uid){
+        return this.dataAnalysisMapper.queryTop5(uid);
+    }
+
 }
