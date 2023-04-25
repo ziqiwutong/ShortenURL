@@ -7,18 +7,16 @@ import com.google.gson.JsonArray;
 import com.team1.shortenurl.entity.Url;
 import com.team1.shortenurl.service.DataAnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 // @RequestMapping(value = "/dataAnalysis")
 @RestController
+@CrossOrigin
 public class DataAnalysisController {
-
+    
     @Autowired
     DataAnalysisService dataAnalysisService;
 
